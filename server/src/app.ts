@@ -1,4 +1,5 @@
 import express from "express";
+import session from "express-session";
 import cors from "cors";
 import router from "./router";
 import auth from "./auth";
@@ -14,6 +15,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({
 	origin: "*",
 	maxAge: HOUR,
+}));
+
+app.use(session({
+	secret: process.env.EXPRESS_SESSION_SECRET as string,
+	resave: false,
+	saveUninitialized: false,
+	cookie: {
+		maxAge: HOUR,
+	},
 }));
 
 app.use(auth());
