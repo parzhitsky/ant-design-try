@@ -91,6 +91,13 @@ export default function App() {
                   style={{ color: red }}
                 />
               </Popover>
+            ) : !user.initialized ? (
+              <Popover content="User initialization error">
+                <ExclamationCircleOutlined
+                  className={classes.OverlayIcon}
+                  style={{ color: red }}
+                />
+              </Popover>
             ) : (
               <>
                 <Breadcrumbs />
