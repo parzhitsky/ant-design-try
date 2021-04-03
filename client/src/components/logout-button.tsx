@@ -1,10 +1,6 @@
 import { useState } from "react";
 import { Button } from "antd";
-import config from "../config"; // TODO: add path aliases
 import useAction from "../store/use-action"; // TODO: add path aliases
-
-/** @private */
-const AUTH_URL = new URL("/auth/self", config.serverOrigin).href;
 
 /** @private */
 interface Props {
@@ -26,7 +22,10 @@ export default function LogoutButton({
 				setLoading(true);
 
 				try {
-					await fetch(AUTH_URL, { method: "DELETE" });
+					await fetch("http://localhost:8081/auth/self", {
+						method: "DELETE",
+						credentials: "include",
+					});
 				} catch (error) {
 					console.error(error);
 					appSetError(String(error));

@@ -5,7 +5,6 @@ import { Layout, Popover } from "antd";
 import { SyncOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
 import type { State } from "./store";
 import useAction from "./store/use-action";
-import config from "./config";
 import classes from "./app.module.css";
 import UserPage from "./pages/user-page";
 import PrivatePage from "./pages/private-page";
@@ -19,9 +18,6 @@ const layoutStyle: React.CSSProperties = {
 
 /** @private */
 const red = "#cf1322" as const;
-
-/** @private */
-const AUTH_URL = new URL("/auth/self?nofail", config.serverOrigin).href;
 
 export default function App() {
   const user = useSelector((state: State) => state.user);
@@ -38,13 +34,14 @@ export default function App() {
 
     (async () => {
       appClearError();
+      appSetLoading(true);
 
       let response!: Response;
 
       try {
-        appSetLoading(true);
-
-        response = await fetch(AUTH_URL);
+        response = await fetch("http://localhost:8081/auth/self?nofail", {
+          credentials: "include",
+        });
 
         if (!response.ok)
           throw new Error(response.statusText);
