@@ -3,6 +3,7 @@ import { Layout } from "antd";
 import PublicPage from "./pages/public-page";
 import PrivatePage from "./pages/private-page";
 import Navigation from "./components/navigation";
+import Breadcrumbs from "./components/breadcrumbs";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Navigation />
         </Layout.Header>
         <Layout.Content>
+          <Breadcrumbs />
           <Switch>
             <Route exact path="/">
               <Redirect to="/public" />
