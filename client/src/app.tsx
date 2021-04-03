@@ -24,15 +24,17 @@ const red = "#cf1322" as const;
 const AUTH_URL = new URL("/auth/self?nofail", config.serverOrigin).href;
 
 export default function App() {
-  const userInitialized = useSelector((state: State) => state.user.initialized);
-  const appError = useSelector((state: State) => state.app.error);
+  const user = useSelector((state: State) => state.user);
+  const app = useSelector((state: State) => state.app);
+
   const userInitialize = useAction("USER$INITIALIZE");
   const userSetUsername = useAction("USER$SET_USERNAME");
+  const appSetLoading = useAction("APP$SET_LOADING");
   const appSetError = useAction("APP$SET_ERROR");
   const appClearError = useAction("APP$CLEAR_ERROR");
 
   useEffect(() => {
-    if (userInitialized) return;
+    if (user.initialized) return;
 
     (async () => {
       appClearError();
@@ -40,6 +42,8 @@ export default function App() {
       let response: Response;
 
       try {
+        appSetLoading(true);
+
         response = await fetch(AUTH_URL);
 
         if (!response.ok)
@@ -50,40 +54,44 @@ export default function App() {
         }
       } catch (error) {
         console.error(response!);
-        return appSetError((error as Error).message);
+        appSetError((error as Error).message);
+        appSetLoading(false);
+        return;
       }
 
       if (response.status === 200)
         userSetUsername(await response.text());
 
+      appSetLoading(false);
       userInitialize();
     })();
   }, [
-    userInitialized,
+    user,
     appClearError,
     appSetError,
-    userInitialize,
     userSetUsername,
+    userInitialize,
+    appSetLoading,
   ]);
 
   return (
     <BrowserRouter>
       <Layout style={layoutStyle}>
         <Layout.Header>
-          <Navigation disabled={!userInitialized} />
+          <Navigation disabled={app.loading || !user.initialized} />
         </Layout.Header>
         <Layout.Content className={classes.Content}>
           {
-            appError != null ? (
-              <Popover content={appError}>
+            app.loading ? (
+              <SyncOutlined spin className={classes.OverlayIcon} />
+            ) : app.error != null ? (
+              <Popover content={app.error}>
                 <ExclamationCircleOutlined
                   className={classes.OverlayIcon}
                   style={{ color: red }}
-                  title={appError}
+                  title={app.error}
                 />
               </Popover>
-            ) : !userInitialized ? (
-              <SyncOutlined spin className={classes.OverlayIcon} />
             ) : (
               <>
               <Breadcrumbs />
