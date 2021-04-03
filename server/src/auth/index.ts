@@ -20,5 +20,5 @@ passport.deserializeUser((username: Username, done) => {
 
 export default () => [
 	passport.initialize(),
-	passport.session()
+	passport.session(),
 ];
