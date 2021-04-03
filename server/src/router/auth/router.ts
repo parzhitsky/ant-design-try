@@ -1,10 +1,12 @@
 import express from "express";
 import passport from "passport";
+import allowMethods from "@/router/middlewares/allow-methods";
 
 /** @public */
 const router = express.Router();
 
 router.route("/self")
+	.all(allowMethods("GET", "POST", "DELETE"))
 	.get((req, res) => {
 		if (req.isAuthenticated())
 			return res.send(req.user.username);
