@@ -13,6 +13,6 @@ app.use(cors({
 
 app.use(auth());
 
-app.use(router);
+app.use("/", router);
 
 export default app;
