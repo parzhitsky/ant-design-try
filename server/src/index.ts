@@ -1,7 +1,7 @@
 import app from "./app";
 
-const port = process.env.PORT ?? 8081;
+const port = 8081; // must be 8081, this is currently expected in the client app
 
 app.listen(port, () => {
-	console.log(`Server is listening on port 8081`);
+	console.log(`Server is listening on port ${port}`);
 });

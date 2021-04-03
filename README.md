@@ -1,10 +1,7 @@
-1. Create `PORT` and `EXPRESS_SESSION_SECRET` environment variables in `server/.env` file (create the file if it doesn't exist)
+1. Create `EXPRESS_SESSION_SECRET` environment variable in `server/.env` file (create the file if it doesn't exist)
 	```ini
 	EXPRESS_SESSION_SECRET="my s@cret!!1"
-	PORT=8081
 	```
-
-	> `PORT` must be `8081`, this is not configurable at the moment
 
 1. Install and startup the server, let it spin in the background
 	```sh
