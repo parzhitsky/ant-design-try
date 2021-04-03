@@ -9,7 +9,7 @@ type Action<Type extends ActionType = ActionType> = ActionFrom<PayloadMap, Type>
 
 /** @private */
 const initial: State = {
-	breadcrumbs: [],
+	breadcrumbs: [ "Home" ],
 };
 
 export default function reducer(state = initial, action: Action): State {
