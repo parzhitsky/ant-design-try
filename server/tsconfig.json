@@ -1,0 +1,22 @@
+{
+  "include": [
+    "src",
+  ],
+  "compilerOptions": {
+    // Output
+    "noEmit": true,
+    "module": "commonjs",
+    "target": "es5",
+    "lib": [ "esnext" ],
+    "esModuleInterop": true,
+
+    // Development
+    "moduleResolution": "node",
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+  },
+}
