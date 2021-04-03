@@ -89,23 +89,22 @@ export default function App() {
                 <ExclamationCircleOutlined
                   className={classes.OverlayIcon}
                   style={{ color: red }}
-                  title={app.error}
                 />
               </Popover>
             ) : (
               <>
-              <Breadcrumbs />
-              <Switch>
-                <Route exact path="/">
-                  <Redirect to="/user" />
-                </Route>
-                <Route path="/user">
-                  <UserPage />
-                </Route>
-                <Route path="/private">
-                  <PrivatePage />
-                </Route>
-              </Switch>
+                <Breadcrumbs />
+                <Switch>
+                  <Route exact path="/">
+                    <Redirect to="/user" />
+                  </Route>
+                  <Route path="/user">
+                    <UserPage />
+                  </Route>
+                  <Route path="/private">
+                    <PrivatePage />
+                  </Route>
+                </Switch>
               </>
             )
           }
