@@ -9,23 +9,17 @@ type Action<Type extends ActionType = ActionType> = ActionFrom<PayloadMap, Type>
 
 /** @private */
 const initial: State = {
-	breadcrumbs: [ "Home" ],
-	error: null,
+	initialized: false,
+	username: "",
 };
 
 export default function reducer(state = initial, action: Action): State {
 	switch (action.type) {
-		case "APP$BREADCRUMBS_POP":
-			return { ...state, breadcrumbs: state.breadcrumbs.slice(0, -1) };
+		case "USER$INITIALIZE":
+			return { ...state, initialized: true };
 
-		case "APP$BREADCRUMBS_PUSH":
-			return { ...state, breadcrumbs: state.breadcrumbs.concat(action.payload) };
-
-		case "APP$SET_ERROR":
-			return { ...state, error: action.payload };
-
-		case "APP$CLEAR_ERROR":
-			return { ...state, error: null };
+		case "USER$SET_USERNAME":
+			return { ...state, username: action.payload };
 
 		default:
 			return state;

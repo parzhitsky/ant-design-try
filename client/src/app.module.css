@@ -1,4 +1,10 @@
 .Content > * {
-	padding: 1rem 2rem 0;
-	margin-bottom: 1rem;
+	margin: 1rem 2rem;
+}
+
+.OverlayIcon {
+	font-size: 200%;
+	position: fixed;
+	left: calc(50% - 0.5em);
+	top: calc(50% - 0.5em);
 }

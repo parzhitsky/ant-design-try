@@ -1,15 +1,18 @@
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import type * as app from "./app/types";
+import type * as user from "./user/types";
 
 /** @private */
 type PayloadMap =
 	& app.PayloadMap
+	& user.PayloadMap
 	;
 
 /** @private */
 type ActionType =
 	| keyof app.PayloadMap
+	| keyof user.PayloadMap
 	;
 
 /** @private */
