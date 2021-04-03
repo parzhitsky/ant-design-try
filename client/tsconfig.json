@@ -1,21 +1,18 @@
 {
   "include": [
-    "src",
+    "src"
   ],
   "compilerOptions": {
-    // Output
     "noEmit": true,
     "module": "esnext",
     "target": "es5",
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext",
+      "esnext"
     ],
     "jsx": "react-jsx",
     "esModuleInterop": true,
-
-    // Development
     "moduleResolution": "node",
     "strict": true,
     "skipLibCheck": true,
@@ -24,5 +21,6 @@
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-  },
+    "allowJs": true
+  }
 }
