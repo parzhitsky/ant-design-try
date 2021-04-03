@@ -39,7 +39,7 @@ export default function App() {
     (async () => {
       appClearError();
 
-      let response: Response;
+      let response!: Response;
 
       try {
         appSetLoading(true);
@@ -53,8 +53,9 @@ export default function App() {
           throw new Error("Unexpected server response");
         }
       } catch (error) {
-        console.error(response!);
-        appSetError((error as Error).message);
+        console.warn(response);
+        console.error(error);
+        appSetError(String(error));
         appSetLoading(false);
         return;
       }
