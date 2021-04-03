@@ -6,6 +6,8 @@ import auth from "./auth";
 /** @public */
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors({
 	origin: "*",
 	maxAge: 1000 * 60 * 60, // one hour
