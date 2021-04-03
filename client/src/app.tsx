@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Layout, Popover } from "antd";
 import { SyncOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
+import { getSelf } from "./api/auth";
 import type { State } from "./store";
 import useAction from "./store/use-action";
 import classes from "./app.module.css";
@@ -36,29 +37,17 @@ export default function App() {
       appClearError();
       appSetLoading(true);
 
-      let response!: Response;
-
       try {
-        response = await fetch("http://localhost:8081/auth/self?nofail", {
-          credentials: "include",
-        });
+        const username = await getSelf();
 
-        if (!response.ok)
-          throw new Error(response.statusText);
-
-        if (!response.status.toString().match(/20\d/)) {
-          throw new Error("Unexpected server response");
-        }
+        if (username != null)
+        userSetUsername(username);
       } catch (error) {
-        console.warn(response);
         console.error(error);
         appSetError(String(error));
         appSetLoading(false);
         return;
       }
-
-      if (response.status === 200)
-        userSetUsername(await response.text());
 
       appSetLoading(false);
       userInitialize();

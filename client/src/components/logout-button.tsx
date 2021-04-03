@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "antd";
+import { logout } from "../api/auth"; // TODO: add path aliases
 import useAction from "../store/use-action"; // TODO: add path aliases
 
 /** @private */
@@ -22,10 +23,7 @@ export default function LogoutButton({
 				setLoading(true);
 
 				try {
-					await fetch("http://localhost:8081/auth/self", {
-						method: "DELETE",
-						credentials: "include",
-					});
+					await logout();
 				} catch (error) {
 					console.error(error);
 					appSetError(String(error));
