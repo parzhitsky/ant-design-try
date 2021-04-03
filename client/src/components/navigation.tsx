@@ -4,6 +4,10 @@ import { Menu } from "antd";
 /** @private */
 const items = [
 	{
+		path: "/login",
+		label: "Login page",
+	},
+	{
 		path: "/user",
 		label: "User page",
 	},

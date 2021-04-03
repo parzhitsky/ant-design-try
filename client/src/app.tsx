@@ -7,6 +7,7 @@ import { getSelf } from "./api/auth";
 import type { State } from "./store";
 import useAction from "./store/use-action";
 import classes from "./app.module.css";
+import LoginPage from "./pages/login-page";
 import UserPage from "./pages/user-page";
 import PrivatePage from "./pages/private-page";
 import Navigation from "./components/navigation";
@@ -91,6 +92,9 @@ export default function App() {
                 <Switch>
                   <Route exact path="/">
                     <Redirect to="/user" />
+                  </Route>
+                  <Route path="/login">
+                    <LoginPage />
                   </Route>
                   <Route path="/user">
                     <UserPage />
