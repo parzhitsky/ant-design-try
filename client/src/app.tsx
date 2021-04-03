@@ -2,7 +2,7 @@ import type React from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { Layout } from "antd";
 import classes from "./app.module.css";
-import PublicPage from "./pages/public-page";
+import UserPage from "./pages/user-page";
 import PrivatePage from "./pages/private-page";
 import Navigation from "./components/navigation";
 import Breadcrumbs from "./components/breadcrumbs";
@@ -23,10 +23,10 @@ export default function App() {
           <Breadcrumbs />
           <Switch>
             <Route exact path="/">
-              <Redirect to="/public" />
+              <Redirect to="/user" />
             </Route>
-            <Route path="/public">
-              <PublicPage />
+            <Route path="/user">
+              <UserPage />
             </Route>
             <Route path="/private">
               <PrivatePage />
