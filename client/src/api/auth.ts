@@ -1,4 +1,4 @@
-import request from "./request"; // TODO: add path aliases
+import request from "./request";
 
 export async function getSelf(): Promise<string | null> {
 	const response = await request("GET", "/auth/self?nofail");

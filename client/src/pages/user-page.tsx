@@ -1,10 +1,10 @@
 import { Row, Col } from "antd";
 import { useSelector } from "react-redux";
-import type { State } from "../store"; // TODO: add path aliases
-import useAction from "../store/use-action";
+import type { State } from "@/store";
+import useAction from "@/store/use-action";
 import AbstractPage from "./abstract-page";
-import LogoutButton from "../components/logout-button"; // TODO: add path aliases
-import UserGreeting from "../components/user-greeting"; // TODO: add path aliases
+import LogoutButton from "@/components/logout-button";
+import UserGreeting from "@/components/user-greeting";
 
 export default function UserPage() {
 	const user = useSelector((state: State) => state.user);

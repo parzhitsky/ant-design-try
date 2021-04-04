@@ -1,10 +1,10 @@
 import { Row, Col } from "antd";
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router";
-import type { State } from "../store"; // TODO: add path aliases
-import useAction from "../store/use-action"; // TODO: add path aliases
+import type { State } from "@/store";
+import useAction from "@/store/use-action";
 import AbstractPage from "./abstract-page";
-import LoginForm from "../components/login-form"; // TODO: add path aliases
+import LoginForm from "@/components/login-form";
 
 export default function LoginPage() {
 	const loggedIn = useSelector((state: State) => (

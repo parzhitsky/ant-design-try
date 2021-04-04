@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router";
-import type { State } from "../store";
-import useAction from "../store/use-action"; // TODO: add path aliases
+import type { State } from "@/store";
+import useAction from "@/store/use-action";
 
 /** @private */
 interface Props {

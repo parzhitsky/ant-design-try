@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Form, Button, Row, Col, Typography } from "antd";
-import { login } from "../../api/auth"; // TODO: add path aliases
-import useAction from "../../store/use-action"; // TODO: add path aliases
+import { login } from "@/api/auth";
+import useAction from "@/store/use-action";
 import LoginFormUsernameField from "./login-form-username-field";
 import LoginFormPasswordField from "./login-form-password-field";
 

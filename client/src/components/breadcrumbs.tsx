@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Breadcrumb } from "antd";
-import type { State } from "../store"; // TODO: add path aliases
+import type { State } from "@/store";
 
 export default function Breadcrumbs() {
 	const items = useSelector((state: State) => state.app.breadcrumbs);

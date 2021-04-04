@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "antd";
-import { logout } from "../api/auth"; // TODO: add path aliases
-import useAction from "../store/use-action"; // TODO: add path aliases
+import { logout } from "@/api/auth";
+import useAction from "@/store/use-action";
 
 /** @private */
 interface Props {
