@@ -28,9 +28,6 @@ export default function reducer(state = initial, action: Action): State {
 		case "APP$SET_ERROR":
 			return { ...state, error: action.payload };
 
-		case "APP$CLEAR_ERROR":
-			return { ...state, error: null };
-
 		default:
 			return state;
 	}

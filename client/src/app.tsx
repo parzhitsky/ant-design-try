@@ -29,13 +29,12 @@ export default function App() {
     const userSetUsername = useAction("USER$SET_USERNAME");
     const appSetLoading = useAction("APP$SET_LOADING");
     const appSetError = useAction("APP$SET_ERROR");
-    const appClearError = useAction("APP$CLEAR_ERROR");
 
     useEffect(() => {
         if (user.initialized) return;
 
         (async () => {
-            appClearError();
+            appSetError(null);
             appSetLoading(true);
 
             try {
@@ -54,11 +53,10 @@ export default function App() {
         })();
     }, [
         user,
-        appClearError,
+        appSetLoading,
         appSetError,
         userSetUsername,
         userInitialize,
-        appSetLoading,
     ]);
 
     return (
