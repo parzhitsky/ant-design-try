@@ -16,8 +16,8 @@ export default function AbstractPage({
 	authed = false,
 	children = null,
 }: Props) {
-	const loggedIn = useSelector((state: State) => (
-		state.user.initialized && state.user.username !== ""
+	const loggedIn = useSelector(({ user }: State) => (
+		user.initialized && user.username != null
 	));
 
 	const breadcrumbsPush = useAction("APP$BREADCRUMBS_PUSH");

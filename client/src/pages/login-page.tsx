@@ -7,8 +7,8 @@ import AbstractPage from "./abstract-page";
 import LoginForm from "@/components/login-form";
 
 export default function LoginPage() {
-	const loggedIn = useSelector((state: State) => (
-		state.user.initialized && state.user.username !== ""
+	const loggedIn = useSelector(({ user }: State) => (
+		user.initialized && user.username != null
 	));
 
 	const userSetUsername = useAction("USER$SET_USERNAME");

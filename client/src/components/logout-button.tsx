@@ -26,7 +26,7 @@ export default function LogoutButton() {
 					setLoading(false);
 				}
 
-				userSetUsername("");
+				userSetUsername(null);
 			}}
 		>
 			Log out

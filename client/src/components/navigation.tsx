@@ -43,7 +43,7 @@ export default function Navigation({ disabled = false }: Props) {
 	const { pathname } = useLocation();
 	const { username } = useSelector((state: State) => state.user);
 
-	const mode: ShowMode = username !== "" ? "auth" : "no-auth";
+	const mode: ShowMode = username != null ? "auth" : "no-auth";
 	const shown = items.filter(({ showMode }) => (
 		showMode == null || showMode === mode
 	));
