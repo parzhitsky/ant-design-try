@@ -1,7 +1,7 @@
 import express from "express";
 import passport from "passport";
-import delay from "@/router/middlewares/delay";
-import allowMethods from "@/router/middlewares/allow-methods";
+import delay from "@/middlewares/delay";
+import allowMethods from "@/middlewares/allow-methods";
 
 /** @public */
 const router = express.Router();
