@@ -1,14 +1,12 @@
 import { Row, Col } from "antd";
 import { useSelector } from "react-redux";
 import type { State } from "@/store";
-import useAction from "@/store/use-action";
 import AbstractPage from "./abstract-page";
 import LogoutButton from "@/components/logout-button";
 import UserGreeting from "@/components/user-greeting";
 
 export default function UserPage() {
 	const user = useSelector((state: State) => state.user);
-	const userSetUsername = useAction("USER$SET_USERNAME");
 
 	return (
 		<AbstractPage authed breadcrumbItem="User">
@@ -19,9 +17,7 @@ export default function UserPage() {
 							<UserGreeting username={user.username} />
 						</Col>
 						<Col span={24}>
-							<LogoutButton
-								onLogout={() => userSetUsername("")}
-							/>
+							<LogoutButton />
 						</Col>
 					</Row>
 				</Col>
