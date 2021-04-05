@@ -14,7 +14,7 @@ export default function UserPage() {
 				<Col xs={18} sm={14} md={10} xl={6}>
 					<Row>
 						<Col span={24}>
-							<UserGreeting username={user.username} />
+							<UserGreeting username={user.username!} />
 						</Col>
 						<Col span={24}>
 							<LogoutButton />
