@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router";
-import type { State } from "../store";
-import useAction from "../store/use-action"; // TODO: add path aliases
+import type { State } from "@/store";
+import useAction from "@/store/use-action";
 
 /** @private */
 interface Props {
@@ -16,8 +16,8 @@ export default function AbstractPage({
 	authed = false,
 	children = null,
 }: Props) {
-	const loggedIn = useSelector((state: State) => (
-		state.user.initialized && state.user.username !== ""
+	const loggedIn = useSelector(({ user }: State) => (
+		user.initialized && user.username != null
 	));
 
 	const breadcrumbsPush = useAction("APP$BREADCRUMBS_PUSH");

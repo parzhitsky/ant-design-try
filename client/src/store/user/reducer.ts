@@ -10,7 +10,7 @@ type Action<Type extends ActionType = ActionType> = ActionFrom<PayloadMap, Type>
 /** @private */
 const initial: State = {
 	initialized: false,
-	username: "",
+	username: null,
 };
 
 export default function reducer(state = initial, action: Action): State {

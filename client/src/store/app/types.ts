@@ -8,6 +8,5 @@ export interface PayloadMap {
 	APP$BREADCRUMBS_POP: never;
 	APP$BREADCRUMBS_PUSH: string;
 	APP$SET_LOADING: boolean;
-	APP$SET_ERROR: string;
-	APP$CLEAR_ERROR: never;
+	APP$SET_ERROR: string | null;
 }

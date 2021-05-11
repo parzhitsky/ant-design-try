@@ -1,7 +1,7 @@
 import express from "express";
 import passport from "passport";
-import delay from "@/router/middlewares/delay";
-import allowMethods from "@/router/middlewares/allow-methods";
+import delay from "@/middlewares/delay";
+import allowMethods from "@/middlewares/allow-methods";
 
 /** @public */
 const router = express.Router();
@@ -19,12 +19,9 @@ router.route("/self")
 
 		res.sendStatus(401);
 	})
-	.post(
-		passport.authenticate("local"),
-		(req, res) => {
-			res.send(req.user!.username);
-		},
-	)
+	.post(passport.authenticate("local", {
+		successRedirect: "/auth/self",
+	}))
 	.delete((req, res) => {
 		req.logout();
 		res.sendStatus(204);

@@ -1,16 +1,7 @@
-/** @private */
-const SERVER_ORIGIN = "http://localhost:8081/";
-
-/** @private */
-const authUrl = new URL("/auth/self", SERVER_ORIGIN).href;
-
-/** @private */
-const authUrlNoFail = new URL("?nofail", authUrl).href;
+import request from "./request";
 
 export async function getSelf(): Promise<string | null> {
-	const response = await fetch(authUrlNoFail, {
-		credentials: "include",
-	});
+	const response = await request("GET", "/auth/self?nofail");
 
 	if (!response.ok)
 		throw new Error(response.statusText);
@@ -27,19 +18,9 @@ export async function getSelf(): Promise<string | null> {
 }
 
 export async function login(username: string, password: string): Promise<Response> {
-	return fetch(authUrl, {
-		method: "POST",
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify({ username, password }),
-		credentials: "include",
-	});
+	return request("POST", "/auth/self", { username, password });
 }
 
 export async function logout(): Promise<void> {
-	await fetch(authUrl, {
-		method: "DELETE",
-		credentials: "include",
-	});
+	await request("DELETE", "/auth/self");
 }

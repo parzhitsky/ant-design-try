@@ -1,19 +1,13 @@
 import { useState } from "react";
 import { Button } from "antd";
-import { logout } from "../api/auth"; // TODO: add path aliases
-import useAction from "../store/use-action"; // TODO: add path aliases
+import { logout } from "@/api/auth";
+import useAction from "@/store/use-action";
 
-/** @private */
-interface Props {
-	onLogout(): void;
-}
-
-export default function LogoutButton({
-	onLogout,
-}: Props) {
+export default function LogoutButton() {
 	const [ loading, setLoading ] = useState(false);
 
 	const appSetError = useAction("APP$SET_ERROR");
+	const userSetUsername = useAction("USER$SET_USERNAME");
 
 	return (
 		<Button
@@ -28,10 +22,11 @@ export default function LogoutButton({
 					console.error(error);
 					appSetError(String(error));
 					return;
+				} finally {
+					setLoading(false);
 				}
 
-				setLoading(false);
-				onLogout();
+				userSetUsername(null);
 			}}
 		>
 			Log out
